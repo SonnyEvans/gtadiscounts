@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonny Evans Sensual Generator</title>
+    <style>
+        @font-face {
+            font-family: 'Pricedown';
+            src: url('path/to/pricedown.ttf') format('truetype');
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        h1 {
+            font-family: 'Pricedown', Arial, sans-serif;
+            text-align: center;
+            color: #ff6347;
+            text-shadow: 2px 2px #000;
+        }
+        label, input, select, button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        input, select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff4500;
+        }
+        canvas {
+            display: none;
+        }
+        #downloadLink {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            color: #ff6347;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Sonny Evans Sensual Generator</h1>
+    <label for="carSelect">Select Car:</label>
+    <select id="carSelect">
+        <option value="-">Dinghy (2 Seats)</option>
+        <option value="166250">Dinghy (4 Seats)</option>
+        <option value="299000">Jetmax</option>
+        <option value="2200000">Kosatka</option>
+        <option value="1325000">Kraken</option>
+        <option value="2955000">Kurtz 31 Patrol Boat</option>
+        <option value="2125000">Longfin</option>
+        <option value="413990">Marquis</option>
+        <option value="-">Police Predator</option>
+        <option value="16889">Seashark</option>
+        <option value="325000">Speeder</option>
+        <option value="196621">Squalo</option>
+        <option value="-">Submersible</option>
+        <option value="25160">Suntrap</option>
+        <option value="1750000">Toro</option>
+        <option value="22000">Tropic</option>
+        <option value="1250000">Tug</option>
+        <option value="1850000">Weaponized Dinghy</option>
+        <option value="685000">Benson</option>
+        <option value="-">Biff</option>
+        <option value="3870300">Cerberus</option>
+        <option value="-">Hauler</option>
+        <option value="1400000">Hauler Custom</option>
+        <option value="27000">Mule</option>
+        <option value="43225">Mule (Armored)</option>
+        <option value="95760">Mule Custom</option>
+        <option value="-">Packer</option>
+        <option value="-">Phantom</option>
+        <option value="1225000">Phantom Custom</option>
+        <option value="2553600">Phantom Wedge</option>
+        <option value="-">Pounder</option>
+        <option value="320530">Pounder Custom</option>
+        <option value="2240000">Stockade</option>
+        <option value="1375000">Terrorbyte</option>
+        <option value="408000">Asbo</option>
+        <option value="0">Blista</option>
+        <option value="580000">Blista Kanjo</option>
+        <option value="610000">Brioso 300</option>
+        <option value="1195000">Brioso 300 Widebody</option>
+        <option value="155000">Brioso R/A</option>
+        <option value="1252500">Brioso R/A (HSW)</option>
+        <option value="1280000">Club</option>
+        <option value="25000">Dilettante</option>
+        <option value="-">Dilettante (Patrol)</option>
+        <option value="18000">Issi</option>
+        <option value="1449000">Issi (Arena)</option>
+        <option value="360000">Issi Classic</option>
+        <option value="85000">Panto</option>
+        <option value="25000">Prairie</option>
+        <option value="140000">Rhapsody</option>
+        <option value="870000">Weevil</option>
+        <option value="185000">Cognoscenti Cabrio</option>
+        <option value="1499000">Euros X32</option>
+        <option value="2699000">Euros X32 (HSW)</option>
+        <option value="205000">Exemplar</option>
+        <option value="80000">F620</option>
+        <option value="90000">Felon</option>
+        <option value="95000">Felon GT</option>
+        <option value="1610000">FR36</option>
+        <option value="60000">Jackal</option>
+        <option value="1370000">Kanjo SJ</option>
+        <option value="80000">Oracle</option>
+        <option value="82000">Oracle XS</option>
+        <option value="1310000">Postlude</option>
+        <option value="1490000">Previon</option>
+        <option value="95000">Sentinel</option>
+        <option value="60000">Sentinel XS</option>
+        <option value="1434000">Sentinel XS (HSW)</option>
+        <option value="845000">Windsor</option>
+        <option value="900000">Windsor Drop</option>
+        <option value="60000">Zion</option>
+        <option value="65000">Zion Cabrio</option>
+        <option value="800">BMX</option>
+        <option value="800">Cruiser</option>
+        <option value="-">Fixter</option>
+        <option value="50000">Inductor</option>
+        <option value="10000">Race Bike</option>
+        <option value="2000">Scorcher</option>
+        <option value="1750000">Cypher (Drift)</option>
+        <option value="1195000">Drift Tampa (Drift)</option>
+        <option value="1508000">Drift Yosemite (Drift)</option>
+        <option value="2000000">Euros (Drift)</option>
+        <option value="1810000">FR36 (Drift)</option>
+        <option value="1790000">Futo GTX (Drift)</option>
+        <option value="2170000">Jester RR (Drift)</option>
+        <option value="997000">Nebula Turbo (Drift)</option>
+        <option value="1570000">Remus (Drift)</option>
+        <option value="1550000">Sentinel Classic Widebody (Drift)</option>
+        <option value="1990000">Vorschlaghammer (Drift)</option>
+        <option value="1815000">ZR350 (Drift)</option>
+        <option value="-">Ambulance</option>
+        <option value="0">Burrito (Bail Enforcement)</option>
+        <option value="4950000">Dominator FX Interceptor</option>
+        <option value="5005000">Dorado Cruiser</option>
+        <option value="-">FIB (Buffalo)</option>
+        <option value="-">FIB (SUV)</option>
+        <option value="3295000">Fire Truck</option>
+        <option value="5420000">Gauntlet Interceptor</option>
+        <option value="4910000">Greewnwood Cruiser</option>
+        <option value="4720000">Impaler LX Cruiser</option>
+        <option value="4720000">Impaler SZ Cruiser</option>
+        <option value="865000">Lifeguard</option>
+        <option value="2980000">Park Ranger</option>
+        <option value="-">Police Bike</option>
+        <option value="-">Police Cruiser (Buffalo)</option>
+        <option value="-">Police Cruiser (Interceptor)</option>
+        <option value="-">Police Cruiser (Stanier)</option>
+        <option value="-">Police Rancher</option>
+        <option value="4800000">Police Riot</option>
+        <option value="-">Police Roadcruiser</option>
+        <option value="-">Police Transporter</option>
+        <option value="550000">Prison Bus</option>
+        <option value="3125500">RCV</option>
+        <option value="-">Sheriff Cruiser</option>
+        <option value="-">Sheriff SUV</option>
+        <option value="4690000">Stanier LE Cruiser</option>
+        <option value="3950000">Unmarked Cruiser</option>
+        <option value="4500000">Akula</option>
+        <option value="1825000">Annihilator</option>
+        <option value="3870000">Annihilator Stealth</option>
+        <option value="1750000">Buzzard</option>
+        <option value="1790000">Cargobob</option>
+        <option value="2450000">Conada</option>
+        <option value="4123000">FH-1 Hunter</option>
+        <option value="1300000">Frogger</option>
+        <option value="2300900">Havok</option>
+        <option value="780000">Maverick</option>
+        <option value="-">Police Maverick</option>
+        <option value="2593500">Savage</option>
+        <option value="1815000">Sea Sparrow</option>
+        <option value="-">Skylift</option>
+        <option value="1815000">Sparrow</option>
+        <option value="2113000">SuperVolito</option>
+        <option value="1500000">Swift</option>
+        <option value="5150000">Swift Deluxe</option>
+        <option value="3790500">Valkyrie</option>
+        <option value="2295000">Volatus</option>
+        <option value="3385000">Weaponized Conada</option>
+        <option value="-">Cutter</option>
+        <option value="-">Dock Handler</option>
+        <option value="0">Dozer</option>
+        <option value="1000000">Dump</option>
+        <option value="-">Flatbed</option>
+        <option value="375000">Guardian</option>
+        <option value="0">Mixer (3-Axle)</option>
+        <option value="-">Mixer (4-Axle)</option>
+        <option value="-">Rubble</option>
+        <option value="-">Tipper (2-Axle)</option>
+        <option value="-">Tipper (3-Axle)</option>
+        <option value="3092250">APC</option>
+        <option value="450000">Barracks</option>
+        <option value="0">Barracks Semi</option>
+        <option value="2121350">Barrage</option>
+        <option value="1500000">Chernobog</option>
+        <option value="225000">Crusader</option>
+        <option value="2254350">Half-Track</option>
+        <option value="2275000">Invade and Persuade Tank</option>
+        <option value="1500000">Rhino Tank</option>
+        <option value="3076290">Scarab</option>
+        <option value="2500000">Thruster</option>
+        <option value="3850350">TM-02 Khanjali</option>
+        <option value="1630000">Vetir</option>
+        <option value="9000">Akuma</option>
+        <option value="116000">Avarus</option>
+        <option value="16000">Bagger</option>
+        <option value="15000">Bati 801</option>
+        <option value="95000">BF400</option>
+        <option value="40000">Carbon RS</option>
+        <option value="210000">Chimera</option>
+        <option value="225000">Cliffhanger</option>
+        <option value="145000">Daemon</option>
+        <option value="0">Daemon (Lost)</option>
+        <option value="1389000">Deathbike</option>
+        <option value="412000">Defiler</option>
+        <option value="169000">Diabolus</option>
+        <option value="414000">Diabolus Custom</option>
+        <option value="12000">Double-T</option>
+        <option value="48000">Enduro</option>
+        <option value="264000">Esskey</option>
+        <option value="5000">Faggio</option>
+        <option value="55000">Faggio Mod</option>
+        <option value="47500">Faggio Sport</option>
+        <option value="135000">FCR 1000</option>
+        <option value="331000">FCR 1000 Custom</option>
+        <option value="120000">Gargoyle</option>
+        <option value="82000">Hakuchou</option>
+        <option value="976000">Hakuchou Drag</option>
+        <option value="2426000">Hakuchou Drag (HSW)</option>
+        <option value="15000">Hexer</option>
+        <option value="92500">Innovation</option>
+        <option value="997500">Lectro</option>
+        <option value="67000">Manchez</option>
+        <option value="225000">Manchez Scout</option>
+        <option value="0">Manchez Scout C</option>
+        <option value="12000">Nemesis</option>
+        <option value="100000">Nightblade</option>
+        <option value="2750000">Oppressor</option>
+        <option value="8000000">Oppressor Mk II</option>
+        <option value="9000">PCJ 600</option>
+        <option value="195000">Pizza Boy</option>
+        <option value="1605000">Powersurge</option>
+        <option value="925000">Rampant Rocket</option>
+        <option value="48000">Rat Bike</option>
+        <option value="1900000">Reever</option>
+        <option value="10000">Ruffian</option>
+        <option value="7000">Sanchez</option>
+        <option value="1995000">Sanctus</option>
+        <option value="2480500">Shinobi</option>
+        <option value="2225000">Shotaro</option>
+        <option value="120000">Sovereign</option>
+        <option value="670000">Stryder</option>
+        <option value="75000">Thrust</option>
+        <option value="9000">Vader</option>
+        <option value="630000">Vindicator</option>
+        <option value="356000">Vortex</option>
+        <option value="95000">Wolfsbane</option>
+        <option value="99000">Zombie Bobber</option>
+        <option value="122000">Zombie Chopper</option>
+        <option value="1580000">Arbiter GT</option>
+        <option value="1936250">Arbiter GT (HSW)</option>
+        <option value="378000">Beater Dukes</option>
+        <option value="160000">Blade</option>
+        <option value="1499000">Brigham</option>
+        <option value="925000">Broadway</option>
+        <option value="29000">Buccaneer</option>
+        <option value="419000">Buccaneer Custom</option>
+        <option value="2140000">Buffalo EVX</option>
+        <option value="3555000">Buffalo EVX (HSW)</option>
+        <option value="2150000">Buffalo STX</option>
+        <option value="277000">Burger Shot Stallion</option>
+        <option value="225000">Chino</option>
+        <option value="405000">Chino Custom</option>
+        <option value="909000">Clique</option>
+        <option value="1205000">Clique Wagon</option>
+        <option value="695000">Coquette BlackFin</option>
+        <option value="512000">Deviant</option>
+        <option value="35000">Dominator</option>
+        <option value="1167000">Dominator (Arena)</option>
+        <option value="1775000">Dominator ASP</option>
+        <option value="1550000">Dominator FX</option>
+        <option value="2195000">Dominator GT</option>
+        <option value="1220000">Dominator GTT</option>
+        <option value="725000">Dominator GTX</option>
+        <option value="1308000">Drift Yosemite</option>
+        <option value="665000">Duke O'Death</option>
+        <option value="62000">Dukes</option>
+        <option value="565000">Ellie</option>
+        <option value="1250000">Eudora</option>
+        <option value="36000">Faction</option>
+        <option value="371000">Faction Custom</option>
+        <option value="731000">Faction Custom Donk</option>
+        <option value="32000">Gauntlet</option>
+        <option value="615000">Gauntlet Classic</option>
+        <option value="815000">Gauntlet Classic Custom</option>
+        <option value="745000">Gauntlet Hellfire</option>
+        <option value="1465000">Greenwood</option>
+        <option value="535000">Hermes</option>
+        <option value="90000">Hotknife</option>
+        <option value="625000">Hustler</option>
+        <option value="331835">Impaler</option>
+        <option value="1541335">Impaler (Arena)</option>
+        <option value="1465000">Impaler LX</option>
+        <option value="1280000">Impaler SZ</option>
+        <option value="2284940">Imperator</option>
+        <option value="0">Lost Slamvan</option>
+        <option value="650000">Lurcher</option>
+        <option value="935000">Manana Custom</option>
+        <option value="32500">Moonbeam</option>
+        <option value="402500">Moonbeam Custom</option>
+        <option value="585000">Nightshade</option>
+        <option value="805000">Peyote Gasser</option>
+        <option value="0">Phoenix</option>
+        <option value="9000">Picador</option>
+        <option value="315000">Pwasser Dominator</option>
+        <option value="6000">Rat-Loader</option>
+        <option value="37500">Rat-Truck</option>
+        <option value="230000">Redwood Gauntlet</option>
+        <option value="10000">Ruiner</option>
+        <option value="3750000">Ruiner 2000</option>
+        <option value="1320000">Ruiner ZZ-8</option>
+        <option value="15000">Sabre Turbo</option>
+        <option value="505000">Sabre Turbo Custom</option>
+        <option value="49500">Slamvan</option>
+        <option value="1371375">Slamvan (Arena)</option>
+        <option value="464500">Slamvan Custom</option>
+        <option value="71000">Stallion</option>
+        <option value="1500000">Tahoma Coupe</option>
+        <option value="375000">Tampa</option>
+        <option value="718000">Tulip</option>
+        <option value="1658000">Tulip M-100</option>
+        <option value="596000">Vamos</option>
+        <option value="21000">Vigero</option>
+        <option value="1947000">Vigero ZX</option>
+        <option value="2497000">Vigero ZX (HSW)</option>
+        <option value="2295000">Vigero ZX Convertible</option>
+        <option value="2845000">Vigero ZX Convertible (HSW)</option>
+        <option value="195000">Virgo</option>
+        <option value="165000">Virgo Classic</option>
+        <option value="405000">Virgo Classic Custom</option>
+        <option value="5500">Voodoo</option>
+        <option value="425500">Voodoo Custom</option>
+        <option value="2108050">Weaponized Tampa</option>
+        <option value="1850000">Weevil Custom</option>
+        <option value="485000">Yosemite</option>
+        <option value="75000">Bifta</option>
+        <option value="8000">Blazer</option>
+        <option value="1755600">Blazer Aqua</option>
+        <option value="62000">Blazer Lifeguard</option>
+        <option value="25000">Bodhi</option>
+        <option value="1280000">Boor</option>
+        <option value="715000">Brawler</option>
+        <option value="1809000">Bruiser</option>
+        <option value="2666650">Brutus</option>
+        <option value="1775000">Caracara</option>
+        <option value="875000">Caracara 4x4</option>
+        <option value="695000">Desert Raid</option>
+        <option value="1870000">Draugur</option>
+        <option value="249000">Dubsta 6x6</option>
+        <option value="20000">Dune Buggy</option>
+        <option value="1130500">Dune FAV</option>
+        <option value="0">Duneloader</option>
+        <option value="1475000">Everon</option>
+        <option value="597000">Freecrawler</option>
+        <option value="835000">Hellion</option>
+        <option value="69000">Hot Rod Blazer</option>
+        <option value="16000">Injection</option>
+        <option value="897750">Insurgent</option>
+        <option value="1795500">Insurgent Pick-Up</option>
+        <option value="1997500">Insurgent Pick-Up Custom</option>
+        <option value="40000">Kalahari</option>
+        <option value="345000">Kamacho</option>
+        <option value="742014">Liberator</option>
+        <option value="500000">Marshall</option>
+        <option value="1775000">Menacer</option>
+        <option value="87000">Mesa (Merryweather)</option>
+        <option value="1485000">MonstroCiti</option>
+        <option value="2594000">MonstroCiti (HSW)</option>
+        <option value="1245000">Nightshark</option>
+        <option value="1268000">Outlaw</option>
+        <option value="1710000">Patriot Mil-Spec</option>
+        <option value="3192000">Ramp Buggy</option>
+        <option value="-">Ramp Buggy (Spoiler)</option>
+        <option value="9000">Rancher XL</option>
+        <option value="1873000">Ratel</option>
+        <option value="1590000">RC Bandito</option>
+        <option value="22000">Rebel</option>
+        <option value="380000">Riata</option>
+        <option value="3000">Rusty Rebel</option>
+        <option value="38000">Sandking SWB</option>
+        <option value="45000">Sandking XL</option>
+        <option value="1568375">Sasquatch</option>
+        <option value="0">Space Docker</option>
+        <option value="81000">Street Blazer</option>
+        <option value="1263500">Technical</option>
+        <option value="1489600">Technical Aqua</option>
+        <option value="1406000">Technical Custom</option>
+        <option value="1877500">Terminus</option>
+        <option value="550000">Trophy Truck</option>
+        <option value="2214000">Vagrant</option>
+        <option value="192000">Verus</option>
+        <option value="1670000">Walton L35</option>
+        <option value="1100000">Winky</option>
+        <option value="1205000">Yosemite 1500</option>
+        <option value="700000">Yosemite Rancher</option>
+        <option value="2400000">Zhaba</option>
+        <option value="3400000">BR8</option>
+        <option value="2997000">DR1</option>
+        <option value="3515000">PR4</option>
+        <option value="3115000">R88</option>
+        <option value="2121350">Alpha-Z1</option>
+        <option value="4787500">Avenger</option>
+        <option value="3800000">B-11 Strikeforce</option>
+        <option value="1150000">Besra</option>
+        <option value="-">Blimp (Atomic)</option>
+        <option value="1190350">Blimp (Nightclub)</option>
+        <option value="-">Blimp (Xero)</option>
+        <option value="-">Cargoplane</option>
+        <option value="240000">Cuban 800</option>
+        <option value="500000">Dodo</option>
+        <option value="275000">Duster</option>
+        <option value="6855000">F-160 Raiju</option>
+        <option value="1296750">Howard NX-25</option>
+        <option value="3990000">Hydra</option>
+        <option value="-">Jet</option>
+        <option value="3657500">LF-22 Starling</option>
+        <option value="1625000">Luxor</option>
+        <option value="10000000">Luxor Deluxe</option>
+        <option value="250000">Mallard</option>
+        <option value="300000">Mammatus</option>
+        <option value="1700000">Miljet</option>
+        <option value="3125500">Mogul</option>
+        <option value="1900000">Nimbus</option>
+        <option value="2653350">P-45 Nokota</option>
+        <option value="6500000">P-996 Lazer</option>
+        <option value="4455500">Pyro</option>
+        <option value="4750000">RM-10 Bombushka</option>
+        <option value="4350000">RO-86 Alkonost</option>
+        <option value="1596000">Rogue</option>
+        <option value="1130500">Seabreeze</option>
+        <option value="1150000">Shamal</option>
+        <option value="2238000">Streamer216</option>
+        <option value="2000000">Titan</option>
+        <option value="4100000">Tula</option>
+        <option value="665000">Ultralight</option>
+        <option value="4788000">V-65 Molotok</option>
+        <option value="450000">Velum</option>
+        <option value="950000">Vestra</option>
+        <option value="3724000">Volatol</option>
+        <option value="12000">Asea</option>
+        <option value="26000">Asterope</option>
+        <option value="459000">Asterope GZ</option>
+        <option value="1740000">Cinquemila</option>
+        <option value="254000">Cognoscenti</option>
+        <option value="558000">Cognoscenti (Armored)</option>
+        <option value="154000">Cognoscenti 55</option>
+        <option value="396000">Cognoscenti 55 (Armored)</option>
+        <option value="1845000">Deity</option>
+        <option value="0">Emperor</option>
+        <option value="0">Emperor Beater</option>
+        <option value="24000">Fugitive</option>
+        <option value="200000">Glendale</option>
+        <option value="520000">Glendale Custom</option>
+        <option value="9000">Ingot</option>
+        <option value="16000">Intruder</option>
+        <option value="10000">Premier</option>
+        <option value="9000">Primo</option>
+        <option value="409000">Primo Custom</option>
+        <option value="8000">Regina</option>
+        <option value="1598000">Rhinehart</option>
+        <option value="45000">Romero Hearse</option>
+        <option value="65000">Schafter</option>
+        <option value="438000">Schafter LWB (Armored)</option>
+        <option value="325000">Schafter V12 (Armored)</option>
+        <option value="1272000">Stafford</option>
+        <option value="10000">Stanier</option>
+        <option value="10000">Stratum</option>
+        <option value="30000">Stretch</option>
+        <option value="250000">Super Diamond</option>
+        <option value="38000">Surge</option>
+        <option value="55000">Tailgater</option>
+        <option value="1495000">Tailgater S</option>
+        <option value="1650000">Turreted Limo</option>
+        <option value="1790000">Vorschlaghammer</option>
+        <option value="120000">Warrener</option>
+        <option value="1260000">Warrener HKR</option>
+        <option value="15000">Washington</option>
+        <option value="1675000">10F</option>
+        <option value="2250000">10F Widebody</option>
+        <option value="2075000">300R</option>
+        <option value="718000">8F Drafter</option>
+        <option value="120000">9F</option>
+        <option value="130000">9F Cabrio</option>
+        <option value="150000">Alpha</option>
+        <option value="105000">Banshee</option>
+        <option value="1863000">Banshee (HSW)</option>
+        <option value="610000">Bestia GTS</option>
+        <option value="42000">Blista Compact</option>
+        <option value="35000">Buffalo</option>
+        <option value="96000">Buffalo S</option>
+        <option value="1995000">Calico GTF</option>
+        <option value="195000">Carbonizzare</option>
+        <option value="100000">Comet</option>
+        <option value="745000">Comet Retro Custom</option>
+        <option value="1878000">Comet S2</option>
+        <option value="1797000">Comet S2 Cabrio</option>
+        <option value="710000">Comet Safari</option>
+        <option value="1145000">Comet SR</option>
+        <option value="138000">Coquette</option>
+        <option value="1510000">Coquette D10</option>
+        <option value="1795000">Corsita</option>
+        <option value="1550000">Cypher</option>
+        <option value="995000">Drift Tampa</option>
+        <option value="904000">Elegy Retro Custom</option>
+        <option value="0">Elegy RH8</option>
+        <option value="2472000">Envisage</option>
+        <option value="1800000">Euros</option>
+        <option value="145000">Feltzer</option>
+        <option value="1675000">Flash GT</option>
+        <option value="448000">Furore GT</option>
+        <option value="36000">Fusilade</option>
+        <option value="9000">Futo</option>
+        <option value="1590000">Futo GTX</option>
+        <option value="940000">GB200</option>
+        <option value="0">Go Go Monkey Blista</option>
+        <option value="1627000">Growler</option>
+        <option value="1790000">Hotring Everon</option>
+        <option value="1810000">Hotring Hellfire</option>
+        <option value="830000">Hotring Sabre</option>
+        <option value="2165000">Imorgon</option>
+        <option value="897000">Issi Sport</option>
+        <option value="1965000">Itali GTO</option>
+        <option value="2380000">Itali GTO Stinger TT</option>
+        <option value="3798000">Itali GTO Stinger TT (HSW)</option>
+        <option value="3465000">Itali RSX</option>
+        <option value="240000">Jester</option>
+        <option value="350000">Jester (Racecar)</option>
+        <option value="790000">Jester Classic</option>
+        <option value="1970000">Jester RR</option>
+        <option value="1225000">Jugular</option>
+        <option value="100000">Khamelion</option>
+        <option value="1700000">Komoda</option>
+        <option value="126350">Kuruma</option>
+        <option value="698250">Kuruma (Armored)</option>
+        <option value="1990000">La Coureuse</option>
+        <option value="2808000">La Coureuse (HSW)</option>
+        <option value="1625000">Locust</option>
+        <option value="1735000">Lynx</option>
+        <option value="275000">Massacro</option>
+        <option value="385000">Massacro (Racecar)</option>
+        <option value="1875000">Neo</option>
+        <option value="1500000">Neon</option>
+        <option value="1880000">Niobe</option>
+        <option value="3680000">Niobe (HSW)</option>
+        <option value="701000">Omnis</option>
+        <option value="1795000">Omnis e-GT</option>
+        <option value="2170000">Panthere</option>
+        <option value="905000">Paragon R</option>
+        <option value="0">Paragon R (Armored)</option>
+        <option value="2010000">Paragon S</option>
+        <option value="1420000">Pariah</option>
+        <option value="24000">Penumbra</option>
+        <option value="1380000">Penumbra FF</option>
+        <option value="1375000">Raiden</option>
+        <option value="132000">Rapid GT</option>
+        <option value="140000">Rapid GT Cabrio</option>
+        <option value="648000">Raptor</option>
+        <option value="1370000">Remus</option>
+        <option value="1610000">Revolter</option>
+        <option value="1715000">RT3000</option>
+        <option value="430000">Ruston</option>
+        <option value="1995000">S95</option>
+        <option value="2520000">S95 (HSW)</option>
+        <option value="208000">Schafter LWB</option>
+        <option value="116000">Schafter V12</option>
+        <option value="1300000">Schlagen GT</option>
+        <option value="80000">Schwartzer</option>
+        <option value="650000">Sentinel Classic</option>
+        <option value="1350000">Sentinel Classic Widebody</option>
+        <option value="695000">Seven-70</option>
+        <option value="2115000">SM722</option>
+        <option value="599000">Specter</option>
+        <option value="751000">Specter Custom</option>
+        <option value="535000">Sprunk Buffalo</option>
+        <option value="500000">Streiter</option>
+        <option value="1224000">Sugoi</option>
+        <option value="12000">Sultan</option>
+        <option value="1718000">Sultan Classic</option>
+        <option value="1789000">Sultan RS Classic</option>
+        <option value="110000">Surano</option>
+        <option value="816000">Tropos Rallye</option>
+        <option value="1285000">V-STR</option>
+        <option value="1785000">Vectre</option>
+        <option value="695000">Verlierer</option>
+        <option value="895000">Veto Classic</option>
+        <option value="995000">Veto Modern</option>
+        <option value="1615000">ZR350</option>
+        <option value="2138640">ZR380</option>
+        <option value="900000">190z</option>
+        <option value="1150000">Ardent</option>
+        <option value="904400">Casco</option>
+        <option value="145000">Cheburek</option>
+        <option value="865000">Cheetah Classic</option>
+        <option value="665000">Coquette Classic</option>
+        <option value="1500000">Coquette D1</option>
+        <option value="5750000">Deluxo</option>
+        <option value="450000">Dynasty</option>
+        <option value="335000">Fagaloa</option>
+        <option value="550000">Franken Stange</option>
+        <option value="785000">GT500</option>
+        <option value="915000">Infernus Classic</option>
+        <option value="350000">JB 700</option>
+        <option value="1470000">JB 700W</option>
+        <option value="995000">Mamba</option>
+        <option value="10000">Manana</option>
+        <option value="1225000">Michelli GT</option>
+        <option value="490000">Monroe</option>
+        <option value="797000">Nebula Turbo</option>
+        <option value="38000">Peyote</option>
+        <option value="620000">Peyote Custom</option>
+        <option value="400000">Pigalle</option>
+        <option value="885000">Rapid GT Classic</option>
+        <option value="615000">Retinue</option>
+        <option value="1620000">Retinue Mk II</option>
+        <option value="750000">Roosevelt</option>
+        <option value="982000">Roosevelt Valor</option>
+        <option value="990000">Savestra</option>
+        <option value="850000">Stinger</option>
+        <option value="875000">Stinger GT</option>
+        <option value="975000">Stirling GT</option>
+        <option value="1875000">Stirling GT (HSW)</option>
+        <option value="2500000">Stromberg</option>
+        <option value="909000">Swinger</option>
+        <option value="4250000">Toreador</option>
+        <option value="998000">Torero</option>
+        <option value="30000">Tornado</option>
+        <option value="0">Tornado Beater</option>
+        <option value="0">Tornado Cabrio</option>
+        <option value="405000">Tornado Custom</option>
+        <option value="0">Tornado Mariachi</option>
+        <option value="378000">Tornado Rat Rod</option>
+        <option value="705000">Turismo Classic</option>
+        <option value="1602000">Turismo Classic (HSW)</option>
+        <option value="875000">Viseris</option>
+        <option value="950000">Z-Type</option>
+        <option value="812000">Zion Classic</option>
+        <option value="1135000">811</option>
+        <option value="1000000">Adder</option>
+        <option value="1955000">Autarch</option>
+        <option value="670000">Banshee 900R</option>
+        <option value="155000">Bullet</option>
+        <option value="3750000">Champion</option>
+        <option value="650000">Cheetah</option>
+        <option value="1890000">Cyclone</option>
+        <option value="2250000">Cyclone II</option>
+        <option value="2701250">Cyclone II (HSW)</option>
+        <option value="1795000">Deveste Eight</option>
+        <option value="2849500">Deveste Eight (HSW)</option>
+        <option value="2750000">Emerus</option>
+        <option value="2355000">Entity MT</option>
+        <option value="3205000">Entity MT (HSW)</option>
+        <option value="795000">Entity XF</option>
+        <option value="2305000">Entity XXR</option>
+        <option value="1995000">ETR1</option>
+        <option value="1750000">FMJ</option>
+        <option value="2740000">Furia</option>
+        <option value="1260000">GP1</option>
+        <option value="2765000">Ignus</option>
+        <option value="440000">Infernus</option>
+        <option value="1189000">Itali GTB</option>
+        <option value="1684000">Itali GTB Custom</option>
+        <option value="2875000">Krieger</option>
+        <option value="2915000">LM87</option>
+        <option value="1440000">Nero</option>
+        <option value="2045000">Nero Custom</option>
+        <option value="1950000">Osiris</option>
+        <option value="880000">Penetrator</option>
+        <option value="2950000">Pipistrello</option>
+        <option value="2475000">RE-7B</option>
+        <option value="1595000">Reaper</option>
+        <option value="3830400">Rocket Voltic</option>
+        <option value="2575000">S80RR</option>
+        <option value="1603000">SC1</option>
+        <option value="4000000">Scramjet</option>
+        <option value="807000">Sultan RS</option>
+        <option value="2200000">T20</option>
+        <option value="1980000">Taipan</option>
+        <option value="1329000">Tempesta</option>
+        <option value="2825000">Tezeract</option>
+        <option value="2325000">Thrax</option>
+        <option value="2310000">Tigon</option>
+        <option value="2890000">Torero XO</option>
+        <option value="2845000">Turismo Omaggio</option>
+        <option value="500000">Turismo R</option>
+        <option value="2515000">Tyrant</option>
+        <option value="2550000">Tyrus</option>
+        <option value="240000">Vacca</option>
+        <option value="1535000">Vagner</option>
+        <option value="3750000">Vigilante</option>
+        <option value="2980000">Virtue</option>
+        <option value="2250000">Visione</option>
+        <option value="150000">Voltic</option>
+        <option value="4500000">Weaponized Ignus</option>
+        <option value="5000000">Weaponized Ignus (HSW)</option>
+        <option value="2700000">X80 Proto</option>
+        <option value="2375000">XA-21</option>
+        <option value="2820000">Zeno</option>
+        <option value="725000">Zentorno</option>
+        <option value="1925000">Zorrusso</option>
+        <option value="1835000">Aleutian</option>
+        <option value="1580000">Astron</option>
+        <option value="1720000">Astron Custom</option>
+        <option value="2095250">Astron Custom (HSW)</option>
+        <option value="90000">Baller</option>
+        <option value="0">Baller (Old)</option>
+        <option value="149000">Baller LE</option>
+        <option value="374000">Baller LE (Armored)</option>
+        <option value="247000">Baller LE LWB</option>
+        <option value="513000">Baller LE LWB (Armored)</option>
+        <option value="890000">Baller ST</option>
+        <option value="1715000">Baller ST-D</option>
+        <option value="27000">BeeJay XL</option>
+        <option value="1650000">Castigator</option>
+        <option value="70000">Cavalcade</option>
+        <option value="60000">Cavalcade (Old)</option>
+        <option value="1665000">Cavalcade XL</option>
+        <option value="250000">Contender</option>
+        <option value="1375000">Dorado</option>
+        <option value="0">Dubsta</option>
+        <option value="0">Dubsta 2</option>
+        <option value="50000">FQ2</option>
+        <option value="35000">Granger</option>
+        <option value="2000000">Granger 3600LX</option>
+        <option value="29000">Gresley</option>
+        <option value="42000">Habanero</option>
+        <option value="195000">Huntley S</option>
+        <option value="1720000">I-Wagen</option>
+        <option value="1835000">Issi Rally</option>
+        <option value="2485000">Issi Rally (HSW)</option>
+        <option value="1650000">Jubilee</option>
+        <option value="58000">Landstalker</option>
+        <option value="1220000">Landstalker XL</option>
+        <option value="0">Mesa</option>
+        <option value="608000">Novak</option>
+        <option value="50000">Patriot</option>
+        <option value="611800">Patriot Stretch</option>
+        <option value="32000">Radius</option>
+        <option value="1175000">Rebla GTS</option>
+        <option value="85000">Rocoto</option>
+        <option value="30000">Seminole</option>
+        <option value="678000">Seminole Frontier</option>
+        <option value="60000">Serrano</option>
+        <option value="1130000">Squaddie</option>
+        <option value="498000">Toros</option>
+        <option value="1605000">Vivanite</option>
+        <option value="2405000">Vivanite (HSW)</option>
+        <option value="253000">XLS</option>
+        <option value="522000">XLS (Armored)</option>
+        <option value="-">Airtug</option>
+        <option value="-">Caddy</option>
+        <option value="120000">Caddy (Bunker)</option>
+        <option value="85000">Caddy (Civilian)</option>
+        <option value="-">Docktug</option>
+        <option value="-">Fieldmaster</option>
+        <option value="-">Forklift</option>
+        <option value="-">Lawn Mower</option>
+        <option value="-">Ripley</option>
+        <option value="35000">Sadler</option>
+        <option value="-">Scrap Truck</option>
+        <option value="1310000">Slamtruck</option>
+        <option value="-">Tow Truck (Large)</option>
+        <option value="1100000">Tow Truck (Salvage Yard)</option>
+        <option value="-">Tow Truck (Small)</option>
+        <option value="0">Tractor</option>
+        <option value="-">Utility Truck (Cargo)</option>
+        <option value="-">Utility Truck (Cherry Picker)</option>
+        <option value="-">Utility Truck (Pickup)</option>
+        <option value="1300000">Armored Boxville</option>
+        <option value="30000">Bison</option>
+        <option value="23000">Bobcat XL</option>
+        <option value="59850">Boxville</option>
+        <option value="598500">Bugstars Burrito</option>
+        <option value="-">Burrito</option>
+        <option value="-">Camper</option>
+        <option value="0">Clown Van</option>
+        <option value="86450">Gang Burrito</option>
+        <option value="-">Gang Burrito (Lost)</option>
+        <option value="15000">Journey</option>
+        <option value="790000">Journey II</option>
+        <option value="30000">Minivan</option>
+        <option value="360000">Minivan Custom</option>
+        <option value="25000">Paradise</option>
+        <option value="-">Pony</option>
+        <option value="13000">Rumpo</option>
+        <option value="130000">Rumpo Custom</option>
+        <option value="0">Speedo</option>
+        <option value="0">Speedo Custom</option>
+        <option value="11000">Surfer</option>
+        <option value="0">Surfer Beater</option>
+        <option value="590000">Surfer Custom</option>
+        <option value="-">Taco Van</option>
+        <option value="16000">Youga</option>
+        <option value="195000">Youga Classic</option>
+        <option value="1288000">Youga Classic 4x4</option>
+        <option value="0">Youga Custom</option>
+    </select><br>
+    <label for="originalPrice">Original price</label>
+    <input type="number" id="originalPrice" step="1" min="0"><br>
+    
+    <label for="discountType">Discount Type:</label>
+    <select id="discountType">
+        <option value="percentage">Percentage</option>
+        <option value="price">Price</option>
+    </select><br>
+    
+    <label for="discountValue">Discount:</label>
+    <input type="number" id="discountValue" step="1" min="0"><br>
+    
+    <button onclick="generateImage()">Generate</button>
+    <canvas id="priceCanvas" width="1920" height="1080"></canvas>
+    <a id="downloadLink" download="price_image.png">Download Image</a>
+
+    <script>
+        document.getElementById('carSelect').addEventListener('change', function() {
+            const carPrice = parseFloat(this.value.replace(/,/g, ''));
+            document.getElementById('originalPrice').value = carPrice;
+        });
+
+        function generateImage() {
+            const originalPrice = parseFloat(document.getElementById('originalPrice').value);
+            const discountType = document.getElementById('discountType').value;
+            const discountValue = parseFloat(document.getElementById('discountValue').value);
+
+            if (isNaN(originalPrice) || isNaN(discountValue) || originalPrice < 0 || discountValue < 0) {
+                alert("Please enter valid non-negative numbers for the prices and discount.");
+                return;
+            }
+
+            let newPrice;
+            let discountPercentage;
+
+            if (discountType === "percentage") {
+                if (discountValue > 100) {
+                    alert("Please enter a discount percentage between 0 and 100.");
+                    return;
+                }
+                discountPercentage = discountValue;
+                newPrice = originalPrice - (originalPrice * (discountPercentage / 100));
+            } else {
+                newPrice = discountValue;
+                discountPercentage = ((originalPrice - newPrice) / originalPrice) * 100;
+            }
+
+            const canvas = document.getElementById('priceCanvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            function drawStylizedText(ctx, text, x, y, font, gradientColors, glowColor, glowBlur, outlineColor, outlineWidth) {
+                ctx.font = font;
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                gradientColors.forEach((color, index) => {
+                    gradient.addColorStop(index / (gradientColors.length - 1), color);
+                });
+                ctx.fillStyle = gradient;
+                ctx.shadowColor = glowColor;
+                ctx.shadowBlur = glowBlur;
+                ctx.strokeStyle = outlineColor;
+                ctx.lineWidth = outlineWidth;
+                ctx.strokeText(text, x, y);
+                ctx.fillText(text, x, y);
+                ctx.shadowBlur = 0;
+            }
+
+            const originalFont = "bold 60px Pricedown, sans-serif";
+            const discountFont = "bold 120px Pricedown, sans-serif"; 
+            const discountPercentageFont = "italic bold 60px Pricedown, sans-serif";
+
+            drawStylizedText(ctx, `$${Math.round(originalPrice)}`, 50, canvas.height - 220, originalFont, ["#00FF00", "#008000"], "#000000", 15, "#000000", 5);
+            drawStylizedText(ctx, `$${Math.round(newPrice)}`, 50, canvas.height - 100, discountFont, ["#FF0000", "#8B0000"], "#000000", 15, "#000000", 5); 
+            drawStylizedText(ctx, `(${Math.round(discountPercentage)}% off)`, 50, canvas.height - 40, discountPercentageFont, ["#FF0000", "#8B0000"], "#000000", 15, "#000000", 5);
+
+            const downloadLink = document.getElementById('downloadLink');
+            const imageUrl = canvas.toDataURL('image/png');
+            downloadLink.href = imageUrl;
+            downloadLink.style.display = 'block';
+
+            const newTab = window.open();
+            newTab.document.write(`<img src="${imageUrl}" alt="Price Image">`);
+            newTab.document.close();
+        }
+    </script>
+</body>
+</html>
